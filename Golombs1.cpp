@@ -110,7 +110,7 @@ static void Coder(int m, double p)
 	fileSource.close();
 	fileBinary.close();
 	//запись в файл распределения
-	ofstream fileDistr("Distribution.txt", ios::out | ios::binary);
+	ofstream fileDistr("Distribution.dat", ios::out | ios::binary);
 	for (int i = 1; i < distribute.size(); ++i )
 		fileDistr << distribute[i] << endl;
     fileDistr.close();
@@ -232,6 +232,7 @@ int main(int argc, char* argv[])
 	cout << "Enter p" << endl; //запрос p
 	cin >> p;
 	int m = 1 - log(1+p)/log(p); // задание оптимального m
+	cout << "m = " << m << endl;
 
 	BuildTable(m); //построение таблицы для параметра
 	Coder(m, p); //кодирование
